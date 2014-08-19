@@ -13,6 +13,12 @@
 		<button id="set">Volume set</button>
 		<input id="set-in">
 		<br>
+		<button id="mute">Mute</button>
+		<br>
+		<button id="unmute">Unmute</button>
+		<br>
+		<button id="toggleMute">Toggle mute</button>
+		<br>
 		<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 		<script>
 			var socket = io.connect("http://localhost:29632");
@@ -30,6 +36,15 @@
 			}
 			document.getElementById("set").onclick = function () {
 				socket.emit("volume set", document.getElementById("set-in").value);
+			}
+			document.getElementById("mute").onclick = function () {
+				socket.emit("mute");
+			}
+			document.getElementById("unmute").onclick = function () {
+				socket.emit("unmute");
+			}
+			document.getElementById("toggleMute").onclick = function () {
+				socket.emit("toggle mute");
 			}
 		</script>
 	</body>
