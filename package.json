@@ -1,7 +1,7 @@
 {
-  "name": "jarvis-client",
-  "description": "A client for jarvispa.info to interact with",
-  "version": "0.0.1",
+  "name": "jarvis-client-mac",
+  "description": "A mac client for jarvispa.info to interact with",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "applescript": "^0.2.1",
