@@ -1,0 +1,36 @@
+<!-- jarvis-client test -->
+<html>
+	<head>
+		<title>jarvis-client test</title>
+	</head>
+	<body style="background-color: #FFBBBB">
+		<button id="up">Volume up</button>
+		<input id="up-in">
+		<br>
+		<button id="down">Volume down</button>
+		<input id="down-in">
+		<br>
+		<button id="set">Volume set</button>
+		<input id="set-in">
+		<br>
+		<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+		<script>
+			var socket = io.connect("http://localhost:29632");
+			socket.on("connect", function () {
+				document.body.style.backgroundColor = "#BBFFBB";
+			});
+			socket.on("disconnect", function () {
+				document.body.style.backgroundColor = "#FFBBBB";
+			});
+			document.getElementById("up").onclick = function () {
+				socket.emit("volume up", document.getElementById("up-in").value);
+			}
+			document.getElementById("down").onclick = function () {
+				socket.emit("volume down", document.getElementById("down-in").value);
+			}
+			document.getElementById("set").onclick = function () {
+				socket.emit("volume set", document.getElementById("set-in").value);
+			}
+		</script>
+	</body>
+</html>
