@@ -1,8 +1,16 @@
-io = require("socket.io") 29632
+socketio = require "socket.io"
+fs = require "fs"
+https = require "https"
+scripts = require "./applescripts"
 
-scripts = require './applescripts'
-			
-scripts.misc.beep()
+options =
+	key: fs.readFileSync "./certs/client.key"
+	cert: fs.readFileSync "./certs/client.crt"	
+app = https.createServer options
+io = socketio.listen app
+app.listen 29632
+
+#, key: key, cert: cert, ca: ca #requestCert: false, rejectUnauthorized: false
 
 io.on "connection", (socket) ->
 	console.log "Connection!"
